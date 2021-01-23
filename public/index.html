@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+    <title>Svelte app</title>
+
+    <link rel='icon' type='image/png' href='/favicon.png'>
+    <link rel='stylesheet' href='/global.css'>
+    <link rel='stylesheet' href='/build/bundle.css'>
+
+    <script defer src='/build/bundle.js'></script>
+</head>
+
+<body>
+    <number-input name="main" value="1234.32"></number-input>
+    <p id="rawvalue"></p>
+    <script>
+        document.getElementsByTagName('number-input')[0]
+            .addEventListener('number-input-update--main', function(e) {
+                var el = document.getElementById('rawvalue')
+                el.innerHTML = 'Raw Value: ' + e.detail.rawvalue
+            })
+    </script>
+</body>
+</html>
